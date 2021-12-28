@@ -1,12 +1,12 @@
 import React from 'react';
 import * as S from './styles';
 
-const Home = () => {
+const Favorites = () => {
   return (
     <S.Container>
-      <S.Title>Home aqui</S.Title>
+      <S.Title>Favotires aqui</S.Title>
     </S.Container>
   );
 };
 
-export default Home;
+export default Favorites;

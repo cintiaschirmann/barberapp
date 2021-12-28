@@ -1,12 +1,12 @@
 import React from 'react';
 import * as S from './styles';
 
-const Home = () => {
+const Profile = () => {
   return (
     <S.Container>
-      <S.Title>Home aqui</S.Title>
+      <S.Title>profile aqui</S.Title>
     </S.Container>
   );
 };
 
-export default Home;
+export default Profile;
