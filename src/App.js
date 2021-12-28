@@ -2,13 +2,14 @@ import React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import UserContextProvider from './contexts/UserContext';
 
-import Routes from './routes/index';
+import BottomTabs from './routes/BottomTabs';
+import Routes from './routes';
 
 const App = () => {
   return (
     <UserContextProvider>
       <NavigationContainer>
-        <Routes />
+        <BottomTabs />
       </NavigationContainer>
     </UserContextProvider>
   );

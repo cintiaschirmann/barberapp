@@ -1,12 +1,12 @@
 import React from 'react';
 import * as S from './styles';
 
-const Home = () => {
+const Search = () => {
   return (
     <S.Container>
-      <S.Title>Home aqui</S.Title>
+      <S.Title>Search aqui</S.Title>
     </S.Container>
   );
 };
 
-export default Home;
+export default Search;
