@@ -1,7 +1,7 @@
 import React from 'react';
 import * as S from './styles';
 
-import {Home} from '../../assets/svgs';
+import {Home} from '../../assets/svg';
 
 const CustomTabBar = () => {
   return (

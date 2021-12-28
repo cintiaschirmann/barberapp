@@ -1,6 +1,6 @@
 import React, {useEffect, useContext} from 'react';
 import * as S from './styles';
-import BarberLogo from '../../assets/barber.svg';
+import {Barber} from '../../assets/svg';
 import AsyncStorage from '@react-native-community/async-storage';
 import {useNavigation} from '@react-navigation/native';
 import Api from '../../Api';
@@ -39,7 +39,7 @@ const Preload = () => {
 
   return (
     <S.Container>
-      <BarberLogo width="100%" height="160" />
+      <Barber width="100%" height="160" />
       <S.LoadingIcon size="large" color="#FFFF" />
     </S.Container>
   );

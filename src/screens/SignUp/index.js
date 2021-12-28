@@ -5,10 +5,8 @@ import {Alert} from 'react-native';
 import {AsyncStorage} from '@react-native-community/async-storage';
 import {UserContext} from '../../contexts/UserContext';
 
-import BarberLogo from '../../assets/barber.svg';
-import PersonIcon from '../../assets/person.svg';
-import EmailIcon from '../../assets/email.svg';
-import LockIcon from '../../assets/lock.svg';
+import {Barber, PersonIcon, EmailIcon, LockIcon} from '../../assets/svg';
+
 import {SignInput} from '../../components';
 
 import Api from '../../Api';
@@ -53,7 +51,7 @@ const SignUp = () => {
 
   return (
     <S.Container>
-      <BarberLogo width="100%" height="160" />
+      <Barber width="100%" height="160" />
       <S.InputArea>
         <SignInput
           IconSvg={PersonIcon}
