@@ -1,10 +1,10 @@
 import React from 'react';
 
-import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import * as NAVIGATORS from '../screens';
-import {CustomTabBar} from '../components/CustomTabBar';
-import {Home} from '../assets/svg';
-const {Navigator, Screen} = createBottomTabNavigator();
+import { CustomTabBar } from '../components/CustomTabBar';
+import { Home } from '../assets/svg';
+const { Navigator, Screen } = createBottomTabNavigator();
 
 export default () => {
   return (
