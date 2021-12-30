@@ -7,9 +7,7 @@ export const initialState = {
 export const UserReducer = (state, action) => {
   switch (action.type) {
     case 'setAvatar':
-      return {...state, avatar: action.payload.avatar};
-      // eslint-disable-next-line no-unreachable
-      break;
+      return { ...state, avatar: action.payload.avatar };
     default:
       return state;
   }

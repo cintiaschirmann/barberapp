@@ -1,51 +1,52 @@
-import React, {useState, useContext} from 'react';
+import React, { useState, useContext } from 'react';
 import * as S from './styles';
-import {useNavigation} from '@react-navigation/native';
-import {Alert} from 'react-native';
-import {AsyncStorage} from '@react-native-community/async-storage';
-import {UserContext} from '../../contexts/UserContext';
+import { useNavigation } from '@react-navigation/native';
+import { Alert } from 'react-native';
+import { AsyncStorage } from '@react-native-community/async-storage';
+import { UserContext } from '../../contexts/UserContext';
 
-import {Barber, PersonIcon, EmailIcon, LockIcon} from '../../assets/svg';
+import { Barber, PersonIcon, EmailIcon, LockIcon } from '../../assets/svg';
 
-import {SignInput} from '../../components';
+import { SignInput } from '../../components';
 
 import Api from '../../Api';
 
 const SignUp = () => {
-  const {dispatch: userDispatch} = useContext(UserContext);
-
+  const { dispatch: userDispatch } = useContext(UserContext);
   const navigation = useNavigation();
 
   const [nameField, setNameField] = useState('');
   const [emailField, setEmailField] = useState('');
-  const [passowordField, setPasswordField] = useState('');
+  const [passwordField, setPasswordField] = useState('');
 
   const handleSignClick = async () => {
-    if (nameField !== '' && emailField !== '' && passowordField !== '') {
-      let res = await Api.signUp(nameField, emailField, passowordField);
-      console.log(res);
+    if (nameField != '' && emailField != '' && passwordField != '') {
+      let res = await Api.signUp(nameField, emailField, passwordField);
+
       if (res.token) {
         await AsyncStorage.setItem('token', res.token);
+
         userDispatch({
           type: 'setAvatar',
           payload: {
             avatar: res.data.avatar,
           },
         });
+
         navigation.reset({
-          routes: [{name: 'BottomTabs'}],
+          routes: [{ name: 'MainTab' }],
         });
       } else {
-        Alert.alert('DEU MERDA' + res.error);
+        alert('Erro: ' + res.error);
       }
     } else {
-      Alert.alert('Preencha os campos!');
+      alert('Preencha os campos');
     }
   };
 
-  const handleMessageButtomClick = () => {
+  const handleMessageButtonClick = () => {
     navigation.reset({
-      routes: [{name: 'SignIn'}],
+      routes: [{ name: 'SignIn' }],
     });
   };
 
@@ -77,7 +78,7 @@ const SignUp = () => {
         </S.CustomButton>
       </S.InputArea>
 
-      <S.SignMessage onPress={handleMessageButtomClick}>
+      <S.SignMessage onPress={handleMessageButtonClick}>
         <S.MessageButton>Já possui uma conta?</S.MessageButton>
         <S.MessageButtonBold>FAÇA LOGIN AQUI!</S.MessageButtonBold>
       </S.SignMessage>
