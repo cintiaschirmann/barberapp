@@ -2,18 +2,27 @@ import React from 'react';
 
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import * as NAVIGATORS from '../screens';
-import { CustomTabBar } from '../components/CustomTabBar';
-import { Home } from '../assets/svg';
+import { Account, Favorite, Home, Search, Today } from '../assets/svg';
 const { Navigator, Screen } = createBottomTabNavigator();
 
-export default () => {
+const BottomTabs = () => {
   return (
-    <Navigator>
+    <Navigator
+      screenOptions={{
+        headerShown: false,
+        tabBarActiveBackgroundColor: '#2EADBE',
+        tabBarInactiveBackgroundColor: '#7EADBE',
+        tabBarStyle: {
+          height: 60,
+          position: 'absolute',
+        },
+      }}
+    >
       <Screen
         options={{
           tabBarLabel: () => null,
           tabBarIcon: () => {
-            return <Home width="50" height="50" />;
+            return <Home width="24" height="24" fill="#fff" />;
           },
         }}
         name="Home"
@@ -23,27 +32,27 @@ export default () => {
         options={{
           tabBarLabel: () => null,
           tabBarIcon: () => {
-            return <Home width="24" height="24" />;
+            return <Search width="24" height="24" fill="#fff" />;
           },
         }}
         name="Appoitments"
-        component={NAVIGATORS.Appoitments}
-      />
-      <Screen
-        options={{
-          tabBarLabel: () => null,
-          tabBarIcon: () => {
-            return <Home width="50" height="50" />;
-          },
-        }}
-        name="Search"
         component={NAVIGATORS.Search}
       />
       <Screen
         options={{
           tabBarLabel: () => null,
           tabBarIcon: () => {
-            return <Home width="50" height="50" />;
+            return <Today width="50" height="50" fill="#fff" />;
+          },
+        }}
+        name="Search"
+        component={NAVIGATORS.Appoitments}
+      />
+      <Screen
+        options={{
+          tabBarLabel: () => null,
+          tabBarIcon: () => {
+            return <Favorite width="24" height="24" fill="#fff" />;
           },
         }}
         name="Favorites"
@@ -53,7 +62,7 @@ export default () => {
         options={{
           tabBarLabel: () => null,
           tabBarIcon: () => {
-            return <Home width="50" height="50" />;
+            return <Account width="24" height="24" fill="#fff" />;
           },
         }}
         name="Profile"
@@ -62,3 +71,5 @@ export default () => {
     </Navigator>
   );
 };
+
+export default BottomTabs;
