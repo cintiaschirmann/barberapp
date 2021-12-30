@@ -25,6 +25,7 @@
     "react-native-svg-transformer": "^0.14.3",
     "react-native-swiper": "^1.6.0",
     "react-native-vector-icons": "^9.0.0",
+    "react-redux": "^7.2.6",
     "styled-components": "^5.3.3"
   },
   "devDependencies": {
