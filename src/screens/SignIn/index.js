@@ -1,49 +1,51 @@
-import React, {useState, useContext} from 'react';
+import React, { useState, useContext } from 'react';
 import * as S from './styles';
-import {Alert} from 'react-native';
-import {useNavigation} from '@react-navigation/native';
-import {AsyncStorage} from '@react-native-community/async-storage';
+import { Alert } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
+import { AsyncStorage } from '@react-native-community/async-storage';
 
-import {UserContext} from '../../contexts/UserContext';
+import { UserContext } from '../../contexts/UserContext';
 
-import {Barber, EmailIcon, LockIcon} from '../../assets/svg';
-import {SignInput} from '../../components';
+import { Barber, EmailIcon, LockIcon } from '../../assets/svg';
+import { SignInput } from '../../components';
 
 import Api from '../../Api';
 
 const SignIn = () => {
-  const {dispatch: userDispatch} = useContext(UserContext);
+  const { dispatch: userDispatch } = useContext(UserContext);
   const navigation = useNavigation();
 
   const [emailField, setEmailField] = useState('');
-  const [passowordField, setPasswordField] = useState('');
+  const [passwordField, setPasswordField] = useState('');
 
   const handleSignClick = async () => {
-    if (emailField !== '' && passowordField !== '') {
-      let json = await Api.signIn(emailField, passowordField);
+    if (emailField != '' && passwordField != '') {
+      let json = await Api.signIn(emailField, passwordField);
 
       if (json.token) {
         await AsyncStorage.setItem('token', json.token);
+
         userDispatch({
           type: 'setAvatar',
           payload: {
             avatar: json.data.avatar,
           },
         });
+
         navigation.reset({
-          routes: [{name: 'BottomTabs'}],
+          routes: [{ name: 'BottomTabs' }],
         });
       } else {
-        Alert.alert('E-mail e/ou senha invalidos!');
+        alert('E-mail e/ou senha errados!');
       }
     } else {
-      Alert.alert('Preencha os campos!');
+      alert('Preencha os campos!');
     }
   };
 
-  const handleMessageButtomClick = () => {
+  const handleMessageButtonClick = () => {
     navigation.reset({
-      routes: [{name: 'SignUp'}],
+      routes: [{ name: 'SignUp' }],
     });
   };
 
@@ -69,7 +71,7 @@ const SignIn = () => {
         </S.CustomButton>
       </S.InputArea>
 
-      <S.SignMessage onPress={handleMessageButtomClick}>
+      <S.SignMessage onPress={handleMessageButtonClick}>
         <S.MessageButton>Ainda não tem uma conta?</S.MessageButton>
         <S.MessageButtonBold>CADASTRE-SE AQUI!</S.MessageButtonBold>
       </S.SignMessage>
